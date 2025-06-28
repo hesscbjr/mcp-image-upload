@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "image-upload": {
+      "type": "stdio",
+      "command": "/Users/hesscloud2.0/mcp-image-upload/build/index.js",
+      "args": [],
+      "env": {}
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "mcp-image-upload",
+  "version": "1.0.0",
+  "description": "MCP server that allows Claude Code to upload images and get back URLs for use in GitHub PRs and other documentation.",
+  "type": "module",
+  "main": "./build/index.js",
+  "bin": {
+    "mcp-image-upload": "./build/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "postbuild": "chmod +x build/index.js"
+  },
+  "files": ["build"],
+  "keywords": ["mcp", "claude", "image-upload", "imgur"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.13.2",
+    "axios": "^1.10.0",
+    "dotenv": "^17.0.0",
+    "form-data": "^4.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.7",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3"
+  }
+}
