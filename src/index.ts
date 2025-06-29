@@ -4,9 +4,15 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { CallToolRequestSchema, ListToolsRequestSchema } from "@modelcontextprotocol/sdk/types.js";
 import dotenv from 'dotenv';
 import { ImgurUploader } from './uploaders/imgur.js';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
 
-// Load environment variables
-dotenv.config();
+// Get the directory of this file
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+// Load environment variables from the MCP server's directory
+dotenv.config({ path: join(__dirname, '..', '.env') });
 
 // Initialize uploader
 const uploader = new ImgurUploader(process.env.IMGUR_CLIENT_ID!);

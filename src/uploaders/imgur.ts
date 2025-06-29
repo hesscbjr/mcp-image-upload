@@ -37,6 +37,11 @@ export class ImgurUploader {
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {
+        if (error.response?.status === 429) {
+          const resetTime = error.response.headers['x-ratelimit-userreset'];
+          const resetDate = resetTime ? new Date(parseInt(resetTime) * 1000).toLocaleString() : 'unknown';
+          throw new Error(`Imgur rate limit exceeded. Try again after ${resetDate}`);
+        }
         throw new Error(`Imgur API error: ${error.response?.data?.data?.error || error.message}`);
       }
       throw error;
